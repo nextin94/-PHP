@@ -1,0 +1,55 @@
+<?php
+error_reporting(E_ALL);                        
+ini_set('displey_errors', 'on');                
+
+      $page = $_GET['page'];                    
+      $path = "pages/$page.php";  
+
+    if (file_exists($path)) {                   
+        $content = file_get_contents($path);
+
+        $reg = '#\{\{title:(.*?)\}\}#';
+        if (preg_match($reg, $content, $match)) {
+            $title = $match[1];
+            $content = trim(preg_replace($reg, '', $content));
+        } else {
+            $title = '';
+        }
+
+        $reg = '#\{\{desc:(.*?)\}\}#';
+        if (preg_match($reg, $content, $match)) {
+            $desc = $match[1];
+            $content = trim(preg_replace($reg, '', $content));
+        } else {
+            $desc = '';
+        }
+
+
+
+    } else {
+        $content = 'file not found';           
+}
+            
+
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css/style.css">
+        <title><?php echo $title; ?></title>
+    </head>
+    <body>
+        <?php echo $dsec; ?>
+        <div id="wrapper">
+            <header>
+                header
+            </header>
+            <main>
+                <?php echo $content;  ?>
+            </main>
+            <footer>
+                footer
+            </footer>
+        </div>
+    </body>
+</html>
