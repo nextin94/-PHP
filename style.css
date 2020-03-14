@@ -1,0 +1,20 @@
+body {
+    background-color: red;
+}
+header {
+    color: blue;
+    height: 200px;
+}
+main {
+    color: yellow;
+    height: 200px;
+}
+footer {
+    color: white;
+    height: 200px;
+}
+#wrapper {
+    width: 900px;
+    border: 1px solid green;
+    margin: 0px auto;
+}
